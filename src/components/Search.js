@@ -5,7 +5,7 @@ class Search extends Component {
   constructor(props){
     super(props);
     this.state = {
-      selectedDistrict: 'เขตลาดกระบัง'
+      selectedDistrict: 'เขตคลองสามวา'
     };
     this.handleChange = this.handleChange.bind(this);
   }

@@ -29,13 +29,6 @@ class DetailListContainer extends Component {
     });
   }
   render(){
-    // let messageNodes = this.state.messages.map((message) => {
-    //   console.log(message.key);
-    //     return (
-    //       <Search message={message.key}/>
-    //       )
-    // });
-    // console.log(this.name);
     let messageList = this.state.messages;
     return (
       <div>

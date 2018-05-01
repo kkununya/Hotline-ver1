@@ -7,7 +7,7 @@ class List extends Component {
     super(props);
     this.state = {
       messages: [],
-      district: 'เขตลาดกระบัง'
+      district: 'เขตคลองสามวา'
     };
       let app = this.props.db.database().ref('โรงพยาบาล/'+this.state.district);
       app.on('value', snapshot => {
