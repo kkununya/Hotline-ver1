@@ -22,7 +22,6 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-       <Header title="Simple Firebase App" />
        <DetailListContainer db={firebase}/>
        {/* <Search db={firebase}/> */}
        {/* <List db={firebase}/> */}
