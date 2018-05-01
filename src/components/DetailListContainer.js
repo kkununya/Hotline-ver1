@@ -32,6 +32,7 @@ class DetailListContainer extends Component {
     let messageList = this.state.messages;
     return (
       <div>
+        <h1 className="title is-5 has-text-centered">โรงพยาบาล</h1>
         <List messageList={messageList} db={firebase}/>
       </div>
     );

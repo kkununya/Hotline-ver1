@@ -23,15 +23,18 @@ class Search extends Component {
       });
       let { selectedDistrict } = this.state
       return (
-        <div>
           <div className="columns is-mobile is-centered">
-            <div className="select is-rounded">
-              <select value={messageNodes.messagesVal} onChange={this.handleChange.bind(this)}>
-                {messageNodes}
-              </select>
+            <div className="column has-text-centered is-3 is-offset-1">
+              <div className=" ">เลือกเขต</div>
+            </div>
+            <div className="column">
+              <div className="select is-rounded">
+                <select value={messageNodes.messagesVal} onChange={this.handleChange.bind(this)}>
+                  {messageNodes}
+                </select>
+              </div>
             </div>
           </div>
-        </div>
       );
   }
 }

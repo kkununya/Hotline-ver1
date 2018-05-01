@@ -22,9 +22,9 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-       <DetailListContainer db={firebase}/>
-       {/* <Search db={firebase}/> */}
-       {/* <List db={firebase}/> */}
+        <Header title="HOTLINE สายด่วน ทั่วไทย"/>
+        <br/>
+        <DetailListContainer db={firebase}/>
       </div>
     );
   }

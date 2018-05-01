@@ -52,7 +52,6 @@ class List extends Component {
     return (
         <div>
           <Search messageList={this.props.messageList} callbackParent={(selectedDistrict) => this.handleSearchChanged(selectedDistrict)}/>
-          <br/>
           {messageNodes}
         </div>
     );

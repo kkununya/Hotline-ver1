@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 class Header extends Component {
   render(){
     return (
-      <nav className="navbar">
+      <nav className="navbar is-primary">
         <div className="navbar-brand">
           <a className="navbar-item" href="">
             {this.props.title}
