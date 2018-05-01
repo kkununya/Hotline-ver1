@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import List from './List';
 import Search from './Search';
+import firebase from 'firebase';
 import _ from 'lodash';
 
 class DetailListContainer extends Component {
@@ -38,7 +39,7 @@ class DetailListContainer extends Component {
     let messageList = this.state.messages;
     return (
       <div>
-        <Search messageList={messageList}/>
+        <List messageList={messageList} db={firebase}/>
       </div>
     );
   }

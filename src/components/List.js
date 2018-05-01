@@ -1,22 +1,30 @@
 import React, {Component} from 'react';
 import Detail  from './Detail';
+import Search from './Search';
 import _ from 'lodash';
 class List extends Component {
   constructor(props){
     super(props);
     this.state = {
       messages: [],
-      // name: ""
+      district: 'เขตลาดกระบัง'
     };
-    let app = this.props.db.database().ref('โรงพยาบาล/' + this.props.name);
+      let app = this.props.db.database().ref('โรงพยาบาล/'+this.state.district);
+      app.on('value', snapshot => {
+        this.getData(snapshot.val());
+      });
+    this.handleSearchChanged = this.handleSearchChanged.bind(this);
+  }
+  handleSearchChanged(selectedDistrict){
+    let app = this.props.db.database().ref('โรงพยาบาล/'+selectedDistrict);
     app.on('value', snapshot => {
       this.getData(snapshot.val());
     });
-    console.log(this.props.name);
-  }
-  setName(name) {
-    this.state.setName = name;
-  }
+    this.setState({district: selectedDistrict}, () => {
+      console.log(typeof(this.state.district), this.state.district);
+    });
+  };
+
   getData(values){
     let messagesVal = values;
     let messages = _(messagesVal)
@@ -30,8 +38,8 @@ class List extends Component {
       messages: messages
     });
   }
+
   render(){
-    
     let messageNodes =  this.state.messages.map((message) => {
         return (
             <div className="card" key={message.key}>
@@ -40,12 +48,11 @@ class List extends Component {
               </div>
             </div>
           )
-      //   Object.values(value).forEach(element => {
-      //     console.log(element)
-      //   });
     });
     return (
         <div>
+          <Search messageList={this.props.messageList} callbackParent={(selectedDistrict) => this.handleSearchChanged(selectedDistrict)}/>
+          <br/>
           {messageNodes}
         </div>
     );
