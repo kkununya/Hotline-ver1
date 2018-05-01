@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Header from '../src/components/Header';
 import DetailListContainer from '../src/components/DetailListContainer';
-import Search from '../src/components/Search'
+import Search from '../src/components/Search';
+import List from '../src/components/List'
 // import logo from './logo.svg';
 import './App.css';
 import firebase from 'firebase';
@@ -22,12 +23,9 @@ class App extends Component {
     return (
       <div className="container">
        <Header title="Simple Firebase App" />
-       <div className="columns">
-          <div className="column is-3"></div>
-          <div className="column is-6">
-          <DetailListContainer db={firebase} />
-          </div>
-        </div>
+       <DetailListContainer db={firebase}/>
+       {/* <Search db={firebase}/> */}
+       {/* <List db={firebase}/> */}
       </div>
     );
   }

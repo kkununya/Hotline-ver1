@@ -4,14 +4,18 @@ import _ from 'lodash';
 class List extends Component {
   constructor(props){
     super(props);
-    this.state  = {
-      messages: []
+    this.state = {
+      messages: [],
+      // name: ""
     };
-    let app = this.props.db.database().ref('โรงพยาบาล')
+    let app = this.props.db.database().ref('โรงพยาบาล/' + this.props.name);
     app.on('value', snapshot => {
-        this.getData(snapshot.val());
-        var name = snapshot.key;
+      this.getData(snapshot.val());
     });
+    console.log(this.props.name);
+  }
+  setName(name) {
+    this.state.setName = name;
   }
   getData(values){
     let messagesVal = values;
@@ -27,8 +31,8 @@ class List extends Component {
     });
   }
   render(){
-    let messageNodes = this.state.messages.map((message) => {
-      console.log(message);
+    
+    let messageNodes =  this.state.messages.map((message) => {
         return (
             <div className="card" key={message.key}>
               <div className="card-content">
@@ -36,18 +40,14 @@ class List extends Component {
               </div>
             </div>
           )
+      //   Object.values(value).forEach(element => {
+      //     console.log(element)
+      //   });
     });
-    console.log(this.name);
     return (
-      // <SubHeader title=''/>
         <div>
           {messageNodes}
         </div>
-    );
-  }
-  render(){
-    return(
-      <div></div>
     );
   }
 }

@@ -1,15 +1,17 @@
 import React, {Component} from 'react';
+import List from './List';
+import Search from './Search';
 import _ from 'lodash';
+
 class DetailListContainer extends Component {
   constructor(props){
     super(props);
-    this.state  = {
+    this.state = {
       messages: []
     };
-    let app = this.props.db.database().ref('โรงพยาบาล')
+    let app = this.props.db.database().ref('โรงพยาบาล');
     app.on('value', snapshot => {
-        this.getData(snapshot.val());
-        var name = snapshot.key;
+      this.getData(snapshot.val());
     });
   }
   getData(values){
@@ -26,10 +28,19 @@ class DetailListContainer extends Component {
     });
   }
   render(){
+    // let messageNodes = this.state.messages.map((message) => {
+    //   console.log(message.key);
+    //     return (
+    //       <Search message={message.key}/>
+    //       )
+    // });
+    // console.log(this.name);
+    let messageList = this.state.messages;
     return (
       <div>
+        <Search messageList={messageList}/>
       </div>
-    )
+    );
   }
 }
 export default DetailListContainer
